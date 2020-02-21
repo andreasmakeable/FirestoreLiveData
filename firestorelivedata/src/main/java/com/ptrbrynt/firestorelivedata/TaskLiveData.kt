@@ -21,7 +21,7 @@ class TaskLiveData<T>(private val task: Task<T>) : LiveData<TaskResult<T>>() {
             when {
                 it.exception != null -> postValue(TaskResult.failure(it.exception))
                 it.isCanceled -> postValue(TaskResult.cancelled())
-                it.isSuccessful -> postValue(TaskResult.success(it.result))
+                it.isSuccessful -> postValue(TaskResult.success(it.result!!))
             }
         }
     }
